@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Agendamentos — Maison Agenda</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Sistema de agendamento leve, bonito e responsivo — sem backend.">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <a class="brand" href="#">
+        <!-- small SVG logo -->
+        <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="10" fill="#0f172a"></circle>
+          <path d="M7 12h10M12 7v10" stroke="#f8fafc" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span>Maison Agenda</span>
+      </a>
+      <nav aria-label="principal">
+        <a href="#agendar">Agendar</a>
+        <a href="#lista">Meus Agendamentos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1>Agende seu horário em segundos</h1>
+        <p class="lead">Interface limpa, validação automática e visual profissional. Funciona offline (dados no navegador).</p>
+        <a class="cta" href="#agendar">Novo agendamento</a>
+      </div>
+      <img src="" alt="" class="hero-illus" aria-hidden="true">
+    </section>
+
+    <section id="agendar" class="card form-card" aria-labelledby="form-title">
+      <h2 id="form-title">Novo Agendamento</h2>
+
+      <form id="appointmentForm" novalidate>
+        <div class="row">
+          <label for="nome">Nome</label>
+          <input id="nome" name="nome" type="text" required minlength="2" placeholder="Seu nome completo" />
+          <small class="hint">Use nome e sobrenome</small>
+        </div>
+
+        <div class="row">
+          <label for="servico">Serviço</label>
+          <select id="servico" name="servico" required>
+            <option value="">Selecione...</option>
+            <option> Corte de cabelo </option>
+            <option> Barba </option>
+            <option> Corte + Barba </option>
+            <option> Manicure </option>
+          </select>
+        </div>
+
+        <div class="row two">
+          <div>
+            <label for="data">Data</label>
+            <input id="data" name="data" type="date" required />
+          </div>
+          <div>
+            <label for="hora">Hora</label>
+            <input id="hora" name="hora" type="time" required />
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="notas">Notas (opcional)</label>
+          <textarea id="notas" name="notas" rows="2" placeholder="Alguma observação?" ></textarea>
+        </div>
+
+        <div class="row actions">
+          <button id="submitBtn" class="btn primary" type="submit">Agendar</button>
+          <button id="clearBtn" class="btn ghost" type="button">Limpar campos</button>
+        </div>
+
+        <p id="formMsg" role="status" aria-live="polite" class="form-msg"></p>
+      </form>
+    </section>
+
+    <section id="lista" class="card list-card" aria-labelledby="list-title">
+      <h2 id="list-title">Meus Agendamentos</h2>
+
+      <div class="controls">
+        <input id="search" type="search" placeholder="Buscar por nome ou serviço" />
+        <select id="filterDate">
+          <option value="all">Todos</option>
+          <option value="upcoming">Próximos</option>
+          <option value="past">Passados</option>
+        </select>
+      </div>
+
+      <div id="noItems" class="empty">Ainda não há agendamentos.</div>
+      <ul id="appointments" class="appointments" aria-live="polite"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <small>© <span id="year"></span> Maison Agenda — Site estático</small>
+      <div class="footer-links">
+        <a href="#" id="exportBtn">Exportar (.json)</a>
+        <a href="#" id="importBtn">Importar</a>
+        <input id="fileInput" type="file" accept="application/json" style="display:none"/>
+      </div>
+    </div>
+  </footer>
+
+  <template id="tpl-appointment">
+    <li class="appointment">
+      <div class="meta">
+        <div class="title"><strong class="nome"></strong> <span class="servico"></span></div>
+        <time class="datetime" datetime=""></time>
+        <p class="notas"></p>
+      </div>
+      <div class="actions">
+        <button class="btn small delete" title="Excluir">Excluir</button>
+      </div>
+    </li>
+  </template>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

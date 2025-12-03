@@ -1,212 +1,324 @@
-<!DOCTYPE html>
+--- FILE: index.html ---
+<!doctype html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Agendamento Barber Premium</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
-        }
-
-        body {
-            background: #0e0e0e;
-            color: #fff;
-            padding: 0;
-        }
-
-        header {
-            width: 100%;
-            padding: 40px;
-            text-align: center;
-            background: url('https://images.unsplash.com/photo-1599351431202-1e0f0134b40c?q=80&w=1200') center/cover no-repeat;
-            height: 380px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            backdrop-filter: brightness(0.4);
-        }
-
-        header h1 {
-            font-size: 3.2rem;
-            letter-spacing: 3px;
-            font-weight: 700;
-            color: #d9b56f;
-            text-shadow: 0 0 10px #000;
-        }
-
-        header p {
-            margin-top: 10px;
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 900px;
-            margin: 40px auto;
-            background: #1a1a1a;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
-        }
-
-        h2 {
-            font-size: 2rem;
-            text-align: center;
-            color: #d9b56f;
-            margin-bottom: 25px;
-        }
-
-        .form-group { margin-bottom: 20px; }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            background: #2a2a2a;
-            color: #fff;
-            font-size: 1rem;
-            outline: none;
-        }
-
-        button {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.2rem;
-            background: linear-gradient(90deg, #d9b56f, #b39259);
-            cursor: pointer;
-            color: #000;
-            transition: 0.3s;
-            font-weight: bold;
-        }
-
-        button:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 15px rgba(255,255,255,0.3);
-        }
-
-        .success {
-            margin-top: 20px;
-            padding: 15px;
-            background: #0f700f;
-            border-radius: 10px;
-            display: none;
-            text-align: center;
-            font-size: 1.1rem;
-        }
-
-        .whatsapp-btn {
-            background: #25d366;
-            color: white;
-            margin-top: 15px;
-        }
-
-        footer {
-            margin-top: 25px;
-            text-align: center;
-            font-size: 0.9rem;
-            opacity: 0.7;
-            padding-bottom: 30px;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Barbershop Premium — Home</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header class="hero">
+    <nav class="nav">
+      <a class="brand" href="index.html">Barbershop Premium</a>
+      <div class="nav-links">
+        <a href="agendar.html">Agendar</a>
+        <a href="admin.html">Painel ADM</a>
+      </div>
+    </nav>
 
-    <header>
-        <h1>BARBERSHOP PREMIUM</h1>
-        <p>Agendamento de alto nível para clientes de estilo</p>
-    </header>
-
-    <div class="container">
-        <h2>Agende Seu Horário</h2>
-
-        <div class="form-group">
-            <label>Seu nome:</label>
-            <input id="nome" type="text" placeholder="Digite seu nome" />
-        </div>
-
-        <div class="form-group">
-            <label>Serviço:</label>
-            <select id="servico">
-                <option value="Corte Premium">Corte Premium</option>
-                <option value="Corte Navalhado">Corte Navalhado</option>
-                <option value="Barba Deluxe">Barba Deluxe</option>
-                <option value="Combo Corte + Barba">Combo Corte + Barba</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>Data:</label>
-            <input id="data" type="date" />
-        </div>
-
-        <div class="form-group">
-            <label>Horário:</label>
-            <input id="hora" type="time" />
-        </div>
-
-        <button onclick="agendar()">Confirmar Agendamento</button>
-        <button class="whatsapp-btn" onclick="enviarWhats()">Enviar para WhatsApp</button>
-
-        <div class="success" id="successBox">Agendamento realizado com sucesso!</div>
+    <div class="hero-content">
+      <h1>Estilo. Precisão. Tradição.</h1>
+      <p>Atendimento premium para quem exige o melhor.</p>
+      <a class="cta" href="agendar.html">Agende seu horário</a>
     </div>
+  </header>
 
-    <footer>
-        Desenvolvido por Jhon Cardoso © 2025 — Todos os direitos reservados
-    </footer>
+  <main class="container">
+    <section class="services">
+      <h2>Serviços</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Corte Premium</h3>
+          <p>Acabamento com navalha, design e relaxamento.</p>
+        </article>
+        <article class="card">
+          <h3>Barba Deluxe</h3>
+          <p>Toque clássico com esfoliação e hidratação.</p>
+        </article>
+        <article class="card">
+          <h3>Combo Corte + Barba</h3>
+          <p>Pacote completo com massagem e finalização.</p>
+        </article>
+      </div>
+    </section>
 
-    <script>
-        function agendar() {
-            const nome = document.getElementById("nome").value;
-            const servico = document.getElementById("servico").value;
-            const data = document.getElementById("data").value;
-            const hora = document.getElementById("hora").value;
-            const box = document.getElementById("successBox");
+    <section class="barber" id="barber">
+      <h2>Conheça o Barbeiro</h2>
+      <div class="barber-grid">
+        <img src="https://images.unsplash.com/photo-1549005860-8b99f0f7f2d3?q=80&w=800" alt="Barbeiro"/>
+        <div class="barber-info">
+          <h3>Rafael Santos</h3>
+          <p>Master Barber com 12 anos de experiência. Especialista em cortes clássicos e designs modernos.</p>
+          <a class="btn small" href="#book">Ver horários</a>
+        </div>
+      </div>
+    </section>
 
-            if (!nome || !servico || !data || !hora) {
-                alert("Preencha todos os campos!");
-                return;
-            }
+    <section class="reviews">
+      <h2>Depoimentos</h2>
+      <p class="muted">"Melhor barbearia da cidade — atendimento impecável." — Lucas M.</p>
+    </section>
+  </main>
 
-            box.style.display = "block";
-            box.innerHTML = `Agendamento confirmado para <b>${nome}</b> — ${servico} em ${data} às ${hora}.`;
+  <footer class="footer">
+    <div class="container">© Jhon Cardoso — Barbershop Premium</div>
+  </footer>
 
-            setTimeout(() => box.style.display = "none", 4000);
-        }
-
-        function enviarWhats() {
-            const nome = document.getElementById("nome").value;
-            const servico = document.getElementById("servico").value;
-            const data = document.getElementById("data").value;
-            const hora = document.getElementById("hora").value;
-
-            if (!nome || !servico || !data || !hora) {
-                alert("Preencha todos os campos antes de enviar para o WhatsApp!");
-                return;
-            }
-
-            const numero = "5599999999999";
-            const mensagem = `Olá! Quero confirmar meu agendamento:%0A%0A👤 Nome: ${nome}%0A💈 Serviço: ${servico}%0A📅 Data: ${data}%0A⏰ Hora: ${hora}`;
-            const link = `https://wa.me/${numero}?text=${mensagem}`;
-
-            window.open(link, "_blank");
-        }
-    </script>
+  <script src="main.js" defer></script>
 </body>
 </html>
+
+--- FILE: agendar.html ---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Agendar — Barbershop Premium</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="nav small">
+    <a class="brand" href="index.html">Barbershop Premium</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="admin.html">Painel ADM</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section id="booking" class="booking">
+      <h2 id="book">Agende seu horário</h2>
+
+      <form id="bookingForm">
+        <div class="row">
+          <label for="name">Nome</label>
+          <input id="name" name="name" required />
+        </div>
+
+        <div class="row">
+          <label for="service">Serviço</label>
+          <select id="service" name="service" required></select>
+        </div>
+
+        <div class="row">
+          <label>Horário disponível</label>
+          <div id="slots" class="slots">Carregando horários...</div>
+        </div>
+
+        <div class="row">
+          <label for="notes">Observações (opcional)</label>
+          <textarea id="notes" name="notes" rows="2"></textarea>
+        </div>
+
+        <div class="actions">
+          <button id="confirmBtn" type="submit" class="btn">Confirmar</button>
+          <a id="waBtn" class="btn ghost" href="#" target="_blank">Enviar WhatsApp</a>
+        </div>
+
+        <p id="msg" class="muted"></p>
+      </form>
+
+      <h3>Seus agendamentos</h3>
+      <ul id="myBookings" class="list"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">© Barbershop Premium</footer>
+  <script src="main.js" defer></script>
+</body>
+</html>
+
+--- FILE: admin.html ---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin — Barbershop Premium</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="nav small">
+    <a class="brand" href="index.html">Barbershop Premium</a>
+    <div class="nav-links"><a href="agendar.html">Agendar</a></div>
+  </nav>
+
+  <main class="container">
+    <h2>Painel Administrador</h2>
+
+    <div id="loginBox" class="panel">
+      <p>Informe a senha para acessar o painel:</p>
+      <input id="pwd" type="password" placeholder="Senha" />
+      <button id="btnLogin" class="btn">Entrar</button>
+      <p class="muted">Senha fornecida pelo dono: <strong>barber123@.</strong></p>
+    </div>
+
+    <div id="adminPanel" style="display:none">
+      <section class="panel">
+        <h3>Serviços registrados</h3>
+        <ul id="serviceList" class="list"></ul>
+        <div class="row">
+          <input id="newService" placeholder="Novo serviço (ex: Corte Premium)" />
+          <button id="addService" class="btn">Adicionar</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h3>Horários disponíveis</h3>
+        <div class="row">
+          <input type="date" id="slotDate" />
+          <input type="time" id="slotTime" />
+          <button id="addSlot" class="btn">Adicionar horário</button>
+        </div>
+        <ul id="slotList" class="list"></ul>
+      </section>
+
+      <section class="panel">
+        <h3>Agendamentos</h3>
+        <ul id="allBookings" class="list"></ul>
+      </section>
+
+      <button id="logout" class="btn ghost">Sair</button>
+    </div>
+  </main>
+
+  <footer class="footer">© Barbershop Premium</footer>
+  <script src="admin.js" defer></script>
+</body>
+</html>
+
+--- FILE: styles.css ---
+:root{ --bg:#0d0d0d; --card:#121212; --muted:#9ca3af; --gold:#d7b36a; --accent:#111 }
+*{box-sizing:border-box}html,body{height:100%;margin:0;font-family:Inter, Poppins, system-ui;background:var(--bg);color:#fff}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;position:sticky;top:0;background:linear-gradient(0deg, rgba(13,13,13,0.85), rgba(13,13,13,0.6));z-index:40}
+.brand{font-weight:700;color:var(--gold);text-decoration:none;font-size:1.1rem}
+.nav-links a{margin-left:18px;color:#fff;text-decoration:none}
+.hero{height:380px;background:url('https://images.unsplash.com/photo-1599351431202-1e0f0134b40c?q=80&w=1600') center/cover no-repeat;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 20px}
+.hero h1{font-size:2.6rem;color:var(--gold);letter-spacing:2px;margin-bottom:8px}
+.hero p{opacity:0.9;color:#fff;margin-bottom:18px}
+.cta{background:var(--gold);color:#000;padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:700}
+.container{max-width:1000px;margin:-60px auto 60px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:30px;border-radius:16px}
+.services .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:18px}
+.card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+.barber-grid{display:grid;grid-template-columns:200px 1fr;gap:18px;align-items:center}
+.barber-grid img{width:200px;height:200px;object-fit:cover;border-radius:12px}
+.muted{color:var(--muted)}
+.footer{padding:30px;text-align:center;color:var(--muted)}
+.btn{display:inline-block;background:var(--gold);color:#000;padding:10px 16px;border-radius:10px;text-decoration:none}
+.small{font-size:0.9rem;padding:8px}
+.panel{background:rgba(255,255,255,0.02);padding:16px;margin-bottom:16px;border-radius:10px}
+.row{display:flex;gap:10px;align-items:center;margin-top:10px}
+input,select,textarea{background:#0f0f0f;border:1px solid rgba(255,255,255,0.04);color:#fff;padding:10px;border-radius:8px}
+.list{list-style:none;padding:0;margin:0}
+.list li{padding:10px;border-radius:8px;margin-top:8px;background:rgba(255,255,255,0.02);display:flex;justify-content:space-between;align-items:center}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slot{padding:10px 12px;border-radius:10px;background:#0f0f0f;border:1px solid rgba(255,255,255,0.03);cursor:pointer}
+.slot.selected{outline:3px solid rgba(215,179,106,0.18)}
+@media(max-width:700px){.barber-grid{grid-template-columns:1fr}.hero h1{font-size:2rem}.container{margin:10px}} 
+
+--- FILE: main.js ---
+/* shared client logic for agendar/index */
+const STORAGE = { SLOTS: 'bp_slots_v1', BOOKINGS: 'bp_bookings_v1', SERVICES: 'bp_services_v1' };
+
+function loadOr(key, def){ try{ const v = localStorage.getItem(key); return v? JSON.parse(v): def }catch(e){return def} }
+function saveOr(key, val){ localStorage.setItem(key, JSON.stringify(val)) }
+
+// ensure some defaults
+if(!loadOr(STORAGE.SERVICES, null)){
+  saveOr(STORAGE.SERVICES, ['Corte Premium','Corte Navalhado','Barba Deluxe','Combo Corte + Barba']);
+}
+if(!loadOr(STORAGE.SLOTS, null)){
+  // create sample next 5 days slots
+  const slots = [];
+  const now = new Date();
+  for(let d=1; d<=7; d++){
+    const day = new Date(now); day.setDate(now.getDate()+d);
+    const dateStr = day.toISOString().slice(0,10);
+    ['09:00','10:30','13:00','15:30','17:00'].forEach(t=> slots.push({id: dateStr+'-'+t, date:dateStr, time:t}));
+  }
+  saveOr(STORAGE.SLOTS, slots);
+}
+
+// populate services/selects on pages
+document.addEventListener('DOMContentLoaded', ()=>{
+  // index: nothing dynamic for now
+  // agendar page
+  const svc = document.getElementById('service');
+  if(svc){ const services = loadOr(STORAGE.SERVICES,[]); services.forEach(s=>{ const o = document.createElement('option'); o.value=s; o.textContent=s; svc.appendChild(o) }); populateSlots(); setupBookingForm(); loadMyBookings(); }
+});
+
+function populateSlots(){ const slotsWrap = document.getElementById('slots'); if(!slotsWrap) return; slotsWrap.innerHTML='';
+  const slots = loadOr(STORAGE.SLOTS,[]);
+  if(slots.length===0){ slotsWrap.textContent='Sem horários disponíveis.'; return }
+  slots.forEach(s=>{
+    const btn = document.createElement('button'); btn.type='button'; btn.className='slot'; btn.dataset.id=s.id; btn.textContent = s.date+' ⏱ '+s.time;
+    btn.addEventListener('click', ()=>{ document.querySelectorAll('.slot').forEach(x=>x.classList.remove('selected')); btn.classList.add('selected'); btn.dataset.selected='1' });
+    slotsWrap.appendChild(btn);
+  })
+}
+
+function setupBookingForm(){ const form = document.getElementById('bookingForm'); if(!form) return;
+  form.addEventListener('submit', e=>{
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim(); const service = document.getElementById('service').value; const notes = document.getElementById('notes').value.trim();
+    const sel = document.querySelector('.slot.selected'); if(!sel){ showMsg('Escolha um horário disponível.'); return }
+    const slotId = sel.dataset.id; const [date,time] = slotId.split('-').slice(0,2);
+    // save booking
+    const bookings = loadOr(STORAGE.BOOKINGS,[]);
+    const id = Date.now().toString(36);
+    bookings.push({id, name, service, date, time, notes}); saveOr(STORAGE.BOOKINGS,bookings);
+    // remove slot from available
+    let slots = loadOr(STORAGE.SLOTS,[]); slots = slots.filter(s=>s.id!==slotId); saveOr(STORAGE.SLOTS,slots); populateSlots(); loadMyBookings(); showMsg('Agendamento confirmado!');
+    // prepare whatsapp link
+    const waBtn = document.getElementById('waBtn'); if(waBtn){ const num = '5599999999999'; const text = encodeURIComponent(`Olá! Quero confirmar meu agendamento.%0A%0ANome: ${name}%0AServiço: ${service}%0AData: ${date}%0AHora: ${time}%0AObservações: ${notes}`); waBtn.href = `https://wa.me/${num}?text=${text}` }
+    form.reset();
+  })
+}
+
+function loadMyBookings(){ const list = document.getElementById('myBookings'); if(!list) return; list.innerHTML=''; const bookings = loadOr(STORAGE.BOOKINGS,[]); bookings.forEach(b=>{ const li = document.createElement('li'); li.innerHTML = `<div><strong>${b.name}</strong> — ${b.service} <br><span class="muted">${b.date} ${b.time}</span></div><div><button class="btn ghost" onclick="cancelBooking('${b.id}')">Cancelar</button></div>`; list.appendChild(li)} ) }
+
+function cancelBooking(id){ if(!confirm('Cancelar este agendamento?')) return; let bookings = loadOr(STORAGE.BOOKINGS,[]); const bk = bookings.find(b=>b.id===id); bookings = bookings.filter(b=>b.id!==id); saveOr(STORAGE.BOOKINGS,bookings);
+  // restore slot
+  const slots = loadOr(STORAGE.SLOTS,[]); slots.push({id: bk.date+'-'+bk.time, date:bk.date, time:bk.time}); saveOr(STORAGE.SLOTS,slots); populateSlots(); loadMyBookings(); showMsg('Agendamento cancelado.') }
+
+function showMsg(m){ const el = document.getElementById('msg'); if(!el) return; el.textContent = m; setTimeout(()=> el.textContent='',3500) }
+
+--- FILE: admin.js ---
+/* admin panel logic */
+const ADMIN_PWD = 'barber123@.'; // senha fornecida
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  const loginBtn = document.getElementById('btnLogin'); if(loginBtn) loginBtn.addEventListener('click', adminLogin);
+  const addServiceBtn = document.getElementById('addService'); if(addServiceBtn) addServiceBtn.addEventListener('click', addService);
+  const addSlotBtn = document.getElementById('addSlot'); if(addSlotBtn) addSlotBtn.addEventListener('click', addSlot);
+  const logout = document.getElementById('logout'); if(logout) logout.addEventListener('click', adminLogout);
+  renderAdminLists(); renderAllBookings();
+});
+
+function adminLogin(){ const pwd = document.getElementById('pwd').value; if(pwd!==ADMIN_PWD){ alert('Senha incorreta'); return } document.getElementById('loginBox').style.display='none'; document.getElementById('adminPanel').style.display='block'; renderAdminLists(); }
+function adminLogout(){ document.getElementById('pwd').value=''; document.getElementById('adminPanel').style.display='none'; document.getElementById('loginBox').style.display='block'; }
+
+function addService(){ const v = document.getElementById('newService').value.trim(); if(!v) return; const s = loadOr(STORAGE.SERVICES,[]); s.push(v); saveOr(STORAGE.SERVICES,s); document.getElementById('newService').value=''; renderAdminLists(); }
+function renderAdminLists(){ const sl = document.getElementById('serviceList'); if(sl){ sl.innerHTML=''; loadOr(STORAGE.SERVICES,[]).forEach((s,i)=>{ const li=document.createElement('li'); li.innerHTML=`<div>${s}</div><div><button class="btn ghost" onclick="removeService(${i})">Remover</button></div>`; sl.appendChild(li) }) }
+  const slotEl = document.getElementById('slotList'); if(slotEl){ slotEl.innerHTML=''; loadOr(STORAGE.SLOTS,[]).forEach(s=>{ const li=document.createElement('li'); li.innerHTML = `<div>${s.date} ${s.time}</div><div><button class="btn ghost" onclick="removeSlot('${s.id}')">Remover</button></div>`; slotEl.appendChild(li) }) }
+}
+
+function removeService(i){ const s = loadOr(STORAGE.SERVICES,[]); s.splice(i,1); saveOr(STORAGE.SERVICES,s); renderAdminLists(); }
+function addSlot(){ const d = document.getElementById('slotDate').value; const t = document.getElementById('slotTime').value; if(!d||!t) return alert('Preencha data e hora'); const id = d+'-'+t; const slots = loadOr(STORAGE.SLOTS,[]); if(slots.some(s=>s.id===id)) return alert('Horário já existe'); slots.push({id,date:d,time:t}); saveOr(STORAGE.SLOTS,slots); renderAdminLists(); }
+function removeSlot(id){ let slots = loadOr(STORAGE.SLOTS,[]); slots = slots.filter(s=>s.id!==id); saveOr(STORAGE.SLOTS,slots); renderAdminLists(); }
+
+function renderAllBookings(){ const all = document.getElementById('allBookings'); if(!all) return; all.innerHTML=''; const bookings = loadOr(STORAGE.BOOKINGS,[]); bookings.forEach(b=>{ const li=document.createElement('li'); li.innerHTML = `<div>${b.name} — ${b.service} <br><span class="muted">${b.date} ${b.time}</span></div><div><button class="btn ghost" onclick="forceCancel('${b.id}')">Cancelar</button></div>`; all.appendChild(li) }) }
+function forceCancel(id){ if(!confirm('Cancelar agendamento?')) return; let bookings = loadOr(STORAGE.BOOKINGS,[]); const bk = bookings.find(b=>b.id===id); bookings = bookings.filter(b=>b.id!==id); saveOr(STORAGE.BOOKINGS,bookings); const slots = loadOr(STORAGE.SLOTS,[]); slots.push({id: bk.date+'-'+bk.time, date:bk.date, time:bk.time}); saveOr(STORAGE.SLOTS,slots); renderAdminLists(); renderAllBookings(); }
+
+
+--- END OF PROJECT FILES ---
+
+Instructions:
+1) Save each "FILE: name" block into that filename inside your project root (agendador/).
+2) Customize the WhatsApp number in main.js (variable num inside the code).
+3) Commit and push to GitHub and deploy on Vercel (static).
+4) Admin password: barber123@.
+5) If you want PWA, image assets, or logo, tell me and I will add them.

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin — Barbershop Premium</title>
+  <link rel="stylesheet" href="./static/style.css">
+</head>
+<body>
+  <nav class="nav small">
+    <a class="brand" href="index.html">Barbershop Premium</a>
+    <div class="nav-links"><a href="agendar.html">Agendar</a></div>
+  </nav>
+
+  <main class="container">
+    <h2>Painel Administrador</h2>
+
+    <div id="loginBox" class="panel">
+      <p>Informe a senha para acessar o painel:</p>
+      <input id="pwd" type="password" placeholder="Senha">
+      <button id="btnLogin" class="btn">Entrar</button>
+    </div>
+
+    <div id="adminPanel" style="display:none">
+      <section class="panel">
+        <h3>Serviços registrados</h3>
+        <ul id="serviceList" class="list"></ul>
+        <div class="row">
+          <input id="newService" placeholder="Novo serviço (ex: Corte Premium)">
+          <button id="addService" class="btn">Adicionar</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h3>Horários disponíveis</h3>
+        <div class="row">
+          <input type="date" id="slotDate">
+          <input type="time" id="slotTime">
+          <button id="addSlot" class="btn">Adicionar horário</button>
+        </div>
+        <ul id="slotList" class="list"></ul>
+      </section>
+
+      <section class="panel">
+        <h3>Agendamentos</h3>
+        <ul id="allBookings" class="list"></ul>
+      </section>
+
+      <button id="logout" class="btn ghost">Sair</button>
+    </div>
+  </main>
+
+  <footer class="footer">© Barbershop Premium</footer>
+  <script src="./static/admin.js" defer></script>
+</body>
+</html>

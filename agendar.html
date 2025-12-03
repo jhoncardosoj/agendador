@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Agendar — Barbershop Premium</title>
+  <link rel="stylesheet" href="./static/style.css">
+</head>
+<body>
+  <nav class="nav small">
+    <a class="brand" href="index.html">Barbershop Premium</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="admin.html">Painel ADM</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section id="booking" class="booking">
+      <h2 id="book">Agende seu horário</h2>
+
+      <form id="bookingForm">
+        <div class="row">
+          <label for="name">Nome</label>
+          <input id="name" name="name" required>
+        </div>
+
+        <div class="row">
+          <label for="service">Serviço</label>
+          <select id="service" name="service" required></select>
+        </div>
+
+        <div class="row">
+          <label>Horário disponível</label>
+          <div id="slots" class="slots">Carregando horários...</div>
+        </div>
+
+        <div class="row">
+          <label for="notes">Observações (opcional)</label>
+          <textarea id="notes" name="notes" rows="2"></textarea>
+        </div>
+
+        <div class="actions">
+          <button id="confirmBtn" type="submit" class="btn">Confirmar</button>
+          <a id="waBtn" class="btn ghost" href="#" target="_blank">Enviar WhatsApp</a>
+        </div>
+
+        <p id="msg" class="muted"></p>
+      </form>
+
+      <h3>Seus agendamentos</h3>
+      <ul id="myBookings" class="list"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">© Barbershop Premium</footer>
+  <script src="./static/main.js" defer></script>
+</body>
+</html>

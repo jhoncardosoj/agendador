@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Agendar — Barbershop Premium</title>
-  <link rel="stylesheet" href="./static/style.css">
+  <link rel="stylesheet" href="./static/css/styles.css">
 </head>
 <body>
   <nav class="nav small">
@@ -27,7 +27,12 @@
 
         <div class="row">
           <label for="phone">WhatsApp (opcional)</label>
-          <input id="phone" name="phone" placeholder="DDDNÚMERO - ex: 5511999999999" />
+          <input id="phone" name="phone" placeholder="ex: 5511999999999" />
+        </div>
+
+        <div class="row">
+          <label for="barber">Barbeiro</label>
+          <select id="barber" name="barber" required></select>
         </div>
 
         <div class="row">
@@ -42,7 +47,7 @@
 
         <div class="row">
           <label for="notes">Observações (opcional)</label>
-          <textarea id="notes" name="notes" rows="2" placeholder="Ex: preferência por barbear com toalha quente"></textarea>
+          <textarea id="notes" name="notes" rows="2" placeholder="Ex: preferência por toalha quente"></textarea>
         </div>
 
         <div class="actions">
@@ -62,6 +67,6 @@
   <footer class="footer">© Barbershop Premium</footer>
 
   <audio id="notifSound" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg" preload="auto"></audio>
-  <script src="./static/main.js" defer></script>
+  <script src="./static/js/main.js" defer></script>
 </body>
 </html>

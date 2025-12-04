@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Admin — Barbershop Premium</title>
-  <link rel="stylesheet" href="./static/style.css">
+  <link rel="stylesheet" href="./static/css/styles.css">
 </head>
 <body>
   <nav class="nav small">
@@ -19,12 +19,22 @@
       <p>Informe a senha para acessar o painel:</p>
       <input id="pwd" type="password" placeholder="Senha" autocomplete="current-password" />
       <button id="btnLogin" class="btn">Entrar</button>
-      <p class="muted">Senha fornecida pelo dono: <strong>barber123@.</strong></p>
+      <p class="muted">Senha: <strong>barber123@.</strong></p>
     </div>
 
     <div id="adminPanel" style="display:none">
       <section class="panel fade-in">
-        <h3>Serviços registrados</h3>
+        <h3>Barbeiros</h3>
+        <ul id="barberList" class="list"></ul>
+        <div class="row">
+          <input id="newBarberName" placeholder="Nome do barbeiro (ex: Rafael)" />
+          <input id="newBarberPhone" placeholder="WhatsApp do barbeiro (ex: 5511999999999)" />
+          <button id="addBarber" class="btn">Adicionar</button>
+        </div>
+      </section>
+
+      <section class="panel fade-in">
+        <h3>Serviços</h3>
         <ul id="serviceList" class="list"></ul>
         <div class="row">
           <input id="newService" placeholder="Novo serviço (ex: Corte Premium)" />
@@ -35,6 +45,7 @@
       <section class="panel fade-in">
         <h3>Horários disponíveis</h3>
         <div class="row">
+          <select id="slotBarber"></select>
           <input type="date" id="slotDate" />
           <input type="time" id="slotTime" />
           <button id="addSlot" class="btn">Adicionar horário</button>
@@ -59,6 +70,6 @@
   <div id="floatingNotif" class="notification" aria-live="polite" role="status" style="display:none"></div>
   <audio id="adminSound" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" preload="auto"></audio>
 
-  <script src="./static/admin.js" defer></script>
+  <script src="./static/js/admin.js" defer></script>
 </body>
 </html>

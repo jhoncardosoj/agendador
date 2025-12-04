@@ -3,77 +3,53 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Barbershop Premium — Home</title>
+  <title>Barbearia Luxo — Home</title>
+  <link rel="manifest" href="./manifest.json" />
   <link rel="stylesheet" href="./static/css/styles.css">
-  <meta name="description" content="Barbearia premium — agende online.">
+  <meta name="theme-color" content="#0d0d0d" />
 </head>
 <body>
   <nav class="nav">
-    <a class="brand" href="index.html">Barbershop Premium</a>
+    <div class="brand">Barbearia Luxo</div>
     <div class="nav-links">
-      <a href="agendar.html">Agendar</a>
-      <a href="admin.html">Painel ADM</a>
+      <a href="./agendar.html">Agendar</a>
+      <a href="./admin.html">Admin</a>
     </div>
   </nav>
 
   <header class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content fade-in">
-      <h1>Estilo. Precisão. Tradição.</h1>
-      <p>Atendimento premium para quem exige o melhor.</p>
-      <a class="cta" href="agendar.html">Agende seu horário</a>
+    <div class="hero-inner">
+      <h1 class="logo-title">Barbearia Luxo</h1>
+      <p class="lead">Estilo — Precisão — Experiência Premium</p>
+      <a class="cta" href="./agendar.html">Agende Agora</a>
     </div>
   </header>
 
   <main class="container">
-    <section class="services fade-in">
-      <h2>Serviços</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>Corte Premium</h3>
-          <p>Acabamento com navalha, design e relaxamento.</p>
-        </article>
-        <article class="card">
-          <h3>Barba Deluxe</h3>
-          <p>Toque clássico com esfoliação e hidratação.</p>
-        </article>
-        <article class="card">
-          <h3>Combo Corte + Barba</h3>
-          <p>Pacote completo com massagem e finalização.</p>
-        </article>
+    <section class="intro">
+      <div class="card">
+        <h2>Nossos Serviços</h2>
+        <div class="services-grid" id="homeServices"></div>
       </div>
-    </section>
 
-    <section class="barber fade-in" id="barber">
-      <h2>Conheça o Barbeiro</h2>
-      <div class="barber-grid">
-        <img src="https://images.unsplash.com/photo-1549005860-8b99f0f7f2d3?q=80&w=800" alt="Barbeiro">
-        <div class="barber-info">
-          <h3>Rafael Santos</h3>
-          <p>Master Barber com 12 anos de experiência. Especialista em cortes clássicos e designs modernos.</p>
-          <a class="btn small" href="agendar.html#book">Ver horários</a>
-        </div>
+      <div class="card">
+        <h2>Equipe</h2>
+        <div id="homeBarbers" class="barbers-grid"></div>
       </div>
-    </section>
 
-    <section class="reviews fade-in">
-      <h2>Depoimentos</h2>
-      <div class="cards">
-        <article class="card">
-          <p><strong>Lucas M.</strong> — Melhor barbearia da cidade, atendimento impecável.</p>
-        </article>
-        <article class="card">
-          <p><strong>Thiago P.</strong> — Profissionais super atenciosos e ambiente premium.</p>
-        </article>
+      <div class="card">
+        <h2>Contato & WhatsApp</h2>
+        <p>Agende rapidamente pelo WhatsApp:</p>
+        <a id="whatsHome" class="btn-ghost" href="#" target="_blank" rel="noopener">Abrir WhatsApp</a>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container">© Jhon Cardoso — Barbershop Premium</div>
+    <small>© 2025 — Barbearia Luxo — Desenvolvido por Jhon Cardoso</small>
   </footer>
 
-  <audio id="notifSound" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg" preload="auto"></audio>
+  <script src="./static/js/sw-register.js"></script>
   <script src="./static/js/main.js" defer></script>
 </body>
 </html>

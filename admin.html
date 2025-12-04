@@ -3,73 +3,75 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Admin — Barbershop Premium</title>
+  <title>Admin — Barbearia Luxo</title>
   <link rel="stylesheet" href="./static/css/styles.css">
+  <link rel="manifest" href="./manifest.json" />
 </head>
 <body>
-  <nav class="nav small">
-    <a class="brand" href="index.html">Barbershop Premium</a>
-    <div class="nav-links"><a href="agendar.html">Agendar</a></div>
+  <nav class="nav">
+    <div class="brand">Painel — Barbearia Luxo</div>
+    <div class="nav-links">
+      <a href="./index.html">Home</a>
+      <a href="./agendar.html">Agendar</a>
+    </div>
   </nav>
 
   <main class="container">
-    <h2>Painel Administrador</h2>
-
-    <div id="loginBox" class="panel fade-in">
-      <p>Informe a senha para acessar o painel:</p>
-      <input id="pwd" type="password" placeholder="Senha" autocomplete="current-password" />
-      <button id="btnLogin" class="btn">Entrar</button>
-      <p class="muted">Senha: <strong>barber123@.</strong></p>
+    <div id="loginBox" class="card admin-login">
+      <h2>Entrar no Painel</h2>
+      <input id="adminUser" placeholder="Usuário" value="admin" />
+      <input id="adminPass" placeholder="Senha" type="password" />
+      <div class="row">
+        <button id="btnLogin" class="btn">Entrar</button>
+        <button id="btnLockoutReset" class="btn-ghost">Reset tentativas</button>
+      </div>
+      <div id="loginMsg" class="muted"></div>
     </div>
 
-    <div id="adminPanel" style="display:none">
-      <section class="panel fade-in">
-        <h3>Barbeiros</h3>
-        <ul id="barberList" class="list"></ul>
-        <div class="row">
-          <input id="newBarberName" placeholder="Nome do barbeiro (ex: Rafael)" />
-          <input id="newBarberPhone" placeholder="WhatsApp do barbeiro (ex: 5511999999999)" />
-          <button id="addBarber" class="btn">Adicionar</button>
+    <div id="adminPanel" class="hidden">
+      <div class="grid-3">
+        <div class="card">
+          <h3>Barbeiros</h3>
+          <ul id="barberList"></ul>
+          <input id="newBarberName" placeholder="Nome do barbeiro" />
+          <input id="newBarberPhone" placeholder="WhatsApp (ex:5511999999999)" />
+          <button id="btnAddBarber" class="btn small">Adicionar Barbeiro</button>
         </div>
-      </section>
 
-      <section class="panel fade-in">
-        <h3>Serviços</h3>
-        <ul id="serviceList" class="list"></ul>
-        <div class="row">
-          <input id="newService" placeholder="Novo serviço (ex: Corte Premium)" />
-          <button id="addService" class="btn">Adicionar</button>
+        <div class="card">
+          <h3>Serviços</h3>
+          <ul id="serviceList"></ul>
+          <input id="newServiceName" placeholder="Nome do serviço" />
+          <input id="newServiceDuration" placeholder="Duração (min)" type="number" />
+          <button id="btnAddService" class="btn small">Adicionar Serviço</button>
         </div>
-      </section>
 
-      <section class="panel fade-in">
-        <h3>Horários disponíveis</h3>
-        <div class="row">
-          <select id="slotBarber"></select>
-          <input type="date" id="slotDate" />
-          <input type="time" id="slotTime" />
-          <button id="addSlot" class="btn">Adicionar horário</button>
+        <div class="card">
+          <h3>Horários</h3>
+          <select id="slotBarberSelect"></select>
+          <input id="slotDate" type="date" />
+          <input id="slotTime" type="time" />
+          <button id="btnAddSlot" class="btn small">Adicionar Horário</button>
+          <button id="btnGenerateDay" class="btn-ghost small">Gerar dia (09:00-18:00)</button>
+          <ul id="slotList"></ul>
         </div>
-        <ul id="slotList" class="list"></ul>
-      </section>
-
-      <section class="panel fade-in">
-        <h3>Agendamentos <span id="notifBadge" class="badge"></span></h3>
-        <ul id="allBookings" class="list"></ul>
-      </section>
-
-      <div class="row" style="margin-top:12px;">
-        <button id="exportAll" class="btn ghost">Exportar Agendamentos</button>
-        <button id="clearAll" class="btn ghost">Limpar Tudo</button>
       </div>
 
-      <button id="logout" class="btn ghost" style="margin-top:20px;">Sair</button>
+      <div class="card">
+        <h3>Agendamentos <span id="badgeBookings" class="badge">0</span></h3>
+        <ul id="allBookings"></ul>
+        <div class="row">
+          <button id="btnExport" class="btn-ghost">Exportar JSON</button>
+          <button id="btnClearAll" class="btn-ghost">Limpar Tudo</button>
+        </div>
+      </div>
     </div>
   </main>
 
-  <div id="floatingNotif" class="notification" aria-live="polite" role="status" style="display:none"></div>
+  <div id="floatingNotif" class="notification" style="display:none"></div>
   <audio id="adminSound" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" preload="auto"></audio>
 
+  <script src="./static/js/sw-register.js"></script>
   <script src="./static/js/admin.js" defer></script>
 </body>
 </html>

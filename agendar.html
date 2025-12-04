@@ -3,70 +3,74 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Agendar — Barbershop Premium</title>
+  <title>Agendar — Barbearia Luxo</title>
   <link rel="stylesheet" href="./static/css/styles.css">
+  <link rel="manifest" href="./manifest.json" />
 </head>
 <body>
-  <nav class="nav small">
-    <a class="brand" href="index.html">Barbershop Premium</a>
+  <nav class="nav">
+    <div class="brand">Barbearia Luxo</div>
     <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="admin.html">Painel ADM</a>
+      <a href="./index.html">Home</a>
+      <a href="./admin.html">Admin</a>
     </div>
   </nav>
 
   <main class="container">
-    <section id="booking" class="booking fade-in">
-      <h2 id="book">Agende seu horário</h2>
+    <section class="card booking-card">
+      <h2>Agendamento</h2>
 
-      <form id="bookingForm" class="form">
-        <div class="row">
-          <label for="name">Nome</label>
-          <input id="name" name="name" placeholder="Seu nome completo" required />
-        </div>
+      <div class="form-grid">
+        <label>Nome completo
+          <input id="clientName" type="text" placeholder="Ex: João Silva" />
+        </label>
 
-        <div class="row">
-          <label for="phone">WhatsApp (opcional)</label>
-          <input id="phone" name="phone" placeholder="ex: 5511999999999" />
-        </div>
+        <label>WhatsApp (opcional)
+          <input id="clientPhone" type="tel" placeholder="5511999999999" />
+        </label>
 
-        <div class="row">
-          <label for="barber">Barbeiro</label>
-          <select id="barber" name="barber" required></select>
-        </div>
+        <label>Barbeiro
+          <select id="selectBarber"></select>
+        </label>
 
-        <div class="row">
-          <label for="service">Serviço</label>
-          <select id="service" name="service" required></select>
-        </div>
+        <label>Serviço
+          <select id="selectService"></select>
+        </label>
 
-        <div class="row">
+        <label>Data
+          <input id="selectDate" type="date" />
+        </label>
+
+        <div>
           <label>Horários disponíveis</label>
-          <div id="slots" class="slots">Carregando horários...</div>
+          <div id="slotsWrap" class="slots-wrap">Escolha uma data</div>
         </div>
 
-        <div class="row">
-          <label for="notes">Observações (opcional)</label>
-          <textarea id="notes" name="notes" rows="2" placeholder="Ex: preferência por toalha quente"></textarea>
-        </div>
+        <label>Observações
+          <textarea id="notes" rows="2" placeholder="Ex: preferencial toalha quente"></textarea>
+        </label>
 
         <div class="actions">
-          <button id="confirmBtn" type="submit" class="btn">Confirmar</button>
-          <a id="waBtn" class="btn ghost" href="#" target="_blank" rel="noopener">Enviar WhatsApp</a>
-          <button id="exportBtn" type="button" class="btn ghost">Exportar .json</button>
+          <button id="btnBook" class="btn">Confirmar Agendamento</button>
+          <button id="btnBookWhats" class="btn-ghost">Enviar WhatsApp</button>
         </div>
 
-        <p id="msg" class="muted" aria-live="polite"></p>
-      </form>
+        <div id="bookingMsg" class="muted"></div>
+      </div>
+    </section>
 
+    <section class="card">
       <h3>Seus agendamentos</h3>
-      <ul id="myBookings" class="list"></ul>
+      <ul id="myBookings"></ul>
     </section>
   </main>
 
-  <footer class="footer">© Barbershop Premium</footer>
+  <footer class="footer">
+    <small>© 2025 — Barbearia Luxo</small>
+  </footer>
 
-  <audio id="notifSound" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg" preload="auto"></audio>
+  <audio id="notifSound" src="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg" preload="auto"></audio>
+  <script src="./static/js/sw-register.js"></script>
   <script src="./static/js/main.js" defer></script>
 </body>
 </html>

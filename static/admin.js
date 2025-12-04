@@ -1,19 +1,63 @@
-const ADMIN_PWD='barber123@.';
-document.addEventListener('DOMContentLoaded',()=>{
-  const loginBtn=document.getElementById('btnLogin'); if(loginBtn) loginBtn.addEventListener('click',adminLogin);
-  const addServiceBtn=document.getElementById('addService'); if(addServiceBtn) addServiceBtn.addEventListener('click',addService);
-  const addSlotBtn=document.getElementById('addSlot'); if(addSlotBtn) addSlotBtn.addEventListener('click',addSlot);
-  const logout=document.getElementById('logout'); if(logout) logout.addEventListener('click',adminLogout);
-  renderAdminLists(); renderAllBookings();
+// Admin login
+const PASSWORD='barber123@.';
+const loginBox=document.getElementById('loginBox');
+const adminPanel=document.getElementById('adminPanel');
+const btnLogin=document.getElementById('btnLogin');
+btnLogin.addEventListener('click',()=>{
+  const pwd=document.getElementById('pwd').value;
+  if(pwd===PASSWORD){loginBox.style.display='none'; adminPanel.style.display='block'; renderAdminLists();}
+  else alert('Senha incorreta');
 });
-function adminLogin(){const pwd=document.getElementById('pwd').value; if(pwd!==ADMIN_PWD){alert('Senha incorreta'); return} document.getElementById('loginBox').style.display='none'; document.getElementById('adminPanel').style.display='block'; renderAdminLists();}
-function adminLogout(){document.getElementById('pwd').value=''; document.getElementById('adminPanel').style.display='none'; document.getElementById('loginBox').style.display='block';}
-function addService(){const v=document.getElementById('newService').value.trim(); if(!v) return; const s=loadOr(STORAGE.SERVICES,[]); s.push(v); saveOr(STORAGE.SERVICES,s); document.getElementById('newService').value=''; renderAdminLists();}
-function renderAdminLists(){const sl=document.getElementById('serviceList'); if(sl){sl.innerHTML=''; loadOr(STORAGE.SERVICES,[]).forEach((s,i)=>{const li=document.createElement('li'); li.innerHTML=`<div>${s}</div><div><button class="btn ghost" onclick="removeService(${i})">Remover</button></div>`; sl.appendChild(li)})}
-const slotEl=document.getElementById('slotList'); if(slotEl){slotEl.innerHTML=''; loadOr(STORAGE.SLOTS,[]).forEach((s,i)=>{const li=document.createElement('li'); li.innerHTML=`<div>${s.date} ⏱ ${s.time}</div><div><button class="btn ghost" onclick="removeSlot('${s.id}')">Remover</button></div>`; slotEl.appendChild(li)})}
+document.getElementById('logout').addEventListener('click',()=>{adminPanel.style.display='none'; loginBox.style.display='block'})
+
+// Admin data
+function renderAdminLists(){
+  // Serviços
+  const svcList=document.getElementById('serviceList'); svcList.innerHTML='';
+  loadOr(STORAGE.SERVICES,[]).forEach((s,i)=>{const li=document.createElement('li'); li.innerHTML=`${s} <button class="btn small ghost" onclick="removeService(${i})">Remover</button>`; svcList.appendChild(li)});
+  
+  // Slots
+  const slotList=document.getElementById('slotList'); slotList.innerHTML='';
+  loadOr(STORAGE.SLOTS,[]).forEach((s,i)=>{const li=document.createElement('li'); li.innerHTML=`${s.date} ⏱ ${s.time} <button class="btn small ghost" onclick="removeSlot('${s.id}')">Remover</button>`; slotList.appendChild(li)});
+
+  // Agendamentos
+  const bkEl=document.getElementById('allBookings'); bkEl.innerHTML='';
+  loadOr(STORAGE.BOOKINGS,[]).forEach(b=>{const li=document.createElement('li'); li.innerHTML=`${b.name} — ${b.service} <span class="muted">${b.date} ${b.time}</span>`; bkEl.appendChild(li)});
+  
+  // Badge
+  const badge=document.getElementById('notifBadge'); if(badge) badge.textContent=loadOr(STORAGE.BOOKINGS,[]).length;
+}
+
+// Serviços add/remove
+document.getElementById('addService').addEventListener('click',()=>{
+  const val=document.getElementById('newService').value.trim();
+  if(!val) return;
+  const s=loadOr(STORAGE.SERVICES,[]); s.push(val); saveOr(STORAGE.SERVICES,s); renderAdminLists(); document.getElementById('newService').value='';
+});
 function removeService(i){const s=loadOr(STORAGE.SERVICES,[]); s.splice(i,1); saveOr(STORAGE.SERVICES,s); renderAdminLists();}
-function addSlot(){const d=document.getElementById('slotDate').value; const t=document.getElementById('slotTime').value; if(!d||!t) return; const s=loadOr(STORAGE.SLOTS,[]); s.push({id:d+'-'+t,date:d,time:t}); saveOr(STORAGE.SLOTS,s); renderAdminLists();}
+
+// Slots add/remove
+document.getElementById('addSlot').addEventListener('click',()=>{
+  const d=document.getElementById('slotDate').value;
+  const t=document.getElementById('slotTime').value;
+  if(!d||!t) return;
+  const s=loadOr(STORAGE.SLOTS,[]); s.push({id:d+'-'+t,date:d,time:t}); saveOr(STORAGE.SLOTS,s); renderAdminLists();
+});
 function removeSlot(id){let s=loadOr(STORAGE.SLOTS,[]); s=s.filter(x=>x.id!==id); saveOr(STORAGE.SLOTS,s); renderAdminLists();}
-function renderAllBookings(){const bkEl=document.getElementById('allBookings'); if(!bkEl) return; bkEl.innerHTML=''; loadOr(STORAGE.BOOKINGS,[]).forEach(b=>{const li=document.createElement('li'); li.innerHTML=`${b.name} — ${b.service} <span class="muted">${b.date} ${b.time}</span>`; bkEl.appendChild(li)})}
-function loadOr(key,def){try{const v=localStorage.getItem(key);return v?JSON.parse(v):def}catch(e){return def}}
-function saveOr(key,val){localStorage.setItem(key,JSON.stringify(val))}
+
+// Notificações visuais admin
+function adminNotify(msg){
+  const n=document.createElement('div'); n.className='notification show'; n.textContent=msg;
+  document.body.appendChild(n); setTimeout(()=>{n.classList.remove('show'); n.remove();},4000);
+}
+
+// Detectar novos agendamentos
+let lastCount=parseInt(localStorage.getItem('bp_last_count')||0);
+setInterval(()=>{
+  const bookings=loadOr(STORAGE.BOOKINGS,[]);
+  if(bookings.length>lastCount){
+    bookings.slice(lastCount).forEach(b=>adminNotify(`Novo agendamento: ${b.name} - ${b.service}`));
+    lastCount=bookings.length;
+    localStorage.setItem('bp_last_count',lastCount);
+  }
+},2000);

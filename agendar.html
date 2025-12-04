@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Agendar — Barbershop Premium</title>
   <link rel="stylesheet" href="./static/style.css">
 </head>
@@ -18,10 +18,16 @@
   <main class="container">
     <section id="booking" class="booking fade-in">
       <h2 id="book">Agende seu horário</h2>
-      <form id="bookingForm">
+
+      <form id="bookingForm" class="form">
         <div class="row">
           <label for="name">Nome</label>
-          <input id="name" name="name" required>
+          <input id="name" name="name" placeholder="Seu nome completo" required />
+        </div>
+
+        <div class="row">
+          <label for="phone">WhatsApp (opcional)</label>
+          <input id="phone" name="phone" placeholder="DDDNÚMERO - ex: 5511999999999" />
         </div>
 
         <div class="row">
@@ -30,21 +36,22 @@
         </div>
 
         <div class="row">
-          <label>Horário disponível</label>
+          <label>Horários disponíveis</label>
           <div id="slots" class="slots">Carregando horários...</div>
         </div>
 
         <div class="row">
           <label for="notes">Observações (opcional)</label>
-          <textarea id="notes" name="notes" rows="2"></textarea>
+          <textarea id="notes" name="notes" rows="2" placeholder="Ex: preferência por barbear com toalha quente"></textarea>
         </div>
 
         <div class="actions">
           <button id="confirmBtn" type="submit" class="btn">Confirmar</button>
-          <a id="waBtn" class="btn ghost" href="#" target="_blank">Enviar WhatsApp</a>
+          <a id="waBtn" class="btn ghost" href="#" target="_blank" rel="noopener">Enviar WhatsApp</a>
+          <button id="exportBtn" type="button" class="btn ghost">Exportar .json</button>
         </div>
 
-        <p id="msg" class="muted"></p>
+        <p id="msg" class="muted" aria-live="polite"></p>
       </form>
 
       <h3>Seus agendamentos</h3>
@@ -53,6 +60,8 @@
   </main>
 
   <footer class="footer">© Barbershop Premium</footer>
+
+  <audio id="notifSound" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg" preload="auto"></audio>
   <script src="./static/main.js" defer></script>
 </body>
 </html>

@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Admin — Barbershop Premium</title>
   <link rel="stylesheet" href="./static/style.css">
 </head>
@@ -17,8 +17,9 @@
 
     <div id="loginBox" class="panel fade-in">
       <p>Informe a senha para acessar o painel:</p>
-      <input id="pwd" type="password" placeholder="Senha">
+      <input id="pwd" type="password" placeholder="Senha" autocomplete="current-password" />
       <button id="btnLogin" class="btn">Entrar</button>
+      <p class="muted">Senha fornecida pelo dono: <strong>barber123@.</strong></p>
     </div>
 
     <div id="adminPanel" style="display:none">
@@ -26,7 +27,7 @@
         <h3>Serviços registrados</h3>
         <ul id="serviceList" class="list"></ul>
         <div class="row">
-          <input id="newService" placeholder="Novo serviço (ex: Corte Premium)">
+          <input id="newService" placeholder="Novo serviço (ex: Corte Premium)" />
           <button id="addService" class="btn">Adicionar</button>
         </div>
       </section>
@@ -34,23 +35,30 @@
       <section class="panel fade-in">
         <h3>Horários disponíveis</h3>
         <div class="row">
-          <input type="date" id="slotDate">
-          <input type="time" id="slotTime">
+          <input type="date" id="slotDate" />
+          <input type="time" id="slotTime" />
           <button id="addSlot" class="btn">Adicionar horário</button>
         </div>
         <ul id="slotList" class="list"></ul>
       </section>
 
       <section class="panel fade-in">
-        <h3>Agendamentos <span id="notifBadge"></span></h3>
+        <h3>Agendamentos <span id="notifBadge" class="badge"></span></h3>
         <ul id="allBookings" class="list"></ul>
       </section>
 
-      <button id="logout" class="btn ghost">Sair</button>
+      <div class="row" style="margin-top:12px;">
+        <button id="exportAll" class="btn ghost">Exportar Agendamentos</button>
+        <button id="clearAll" class="btn ghost">Limpar Tudo</button>
+      </div>
+
+      <button id="logout" class="btn ghost" style="margin-top:20px;">Sair</button>
     </div>
   </main>
 
-  <footer class="footer">© Barbershop Premium</footer>
+  <div id="floatingNotif" class="notification" aria-live="polite" role="status" style="display:none"></div>
+  <audio id="adminSound" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" preload="auto"></audio>
+
   <script src="./static/admin.js" defer></script>
 </body>
 </html>

@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Barbershop Premium — Home</title>
   <link rel="stylesheet" href="./static/style.css">
+  <meta name="description" content="Barbearia premium — agende online.">
 </head>
 <body>
   <nav class="nav">
@@ -16,6 +17,7 @@
   </nav>
 
   <header class="hero">
+    <div class="hero-overlay"></div>
     <div class="hero-content fade-in">
       <h1>Estilo. Precisão. Tradição.</h1>
       <p>Atendimento premium para quem exige o melhor.</p>
@@ -42,7 +44,7 @@
       </div>
     </section>
 
-    <section class="barber fade-in">
+    <section class="barber fade-in" id="barber">
       <h2>Conheça o Barbeiro</h2>
       <div class="barber-grid">
         <img src="https://images.unsplash.com/photo-1549005860-8b99f0f7f2d3?q=80&w=800" alt="Barbeiro">
@@ -53,12 +55,25 @@
         </div>
       </div>
     </section>
+
+    <section class="reviews fade-in">
+      <h2>Depoimentos</h2>
+      <div class="cards">
+        <article class="card">
+          <p><strong>Lucas M.</strong> — Melhor barbearia da cidade, atendimento impecável.</p>
+        </article>
+        <article class="card">
+          <p><strong>Thiago P.</strong> — Profissionais super atenciosos e ambiente premium.</p>
+        </article>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
-    <div class="container">© Jhon Cardoso — Barbershop Premium</div>
+    <div class="container">© Jhon Cardoso — Direitos Reservados.</div>
   </footer>
 
+  <audio id="notifSound" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg" preload="auto"></audio>
   <script src="./static/main.js" defer></script>
 </body>
 </html>
